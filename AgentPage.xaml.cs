@@ -23,11 +23,8 @@ namespace Muhametshin_Глазки_save
         public AgentPage()
         {
             InitializeComponent();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            Manager.MainFrame.Navigate(new AddEditPage());
+            var currentAgent = MuhametshinEyesEntities.GetContext().Agent.ToList();
+            AgentListView.ItemsSource = currentAgent;
         }
 
         private void TBoxSearch_TextChanged(object sender, TextChangedEventArgs e)

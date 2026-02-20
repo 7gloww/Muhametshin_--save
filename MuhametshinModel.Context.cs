@@ -15,6 +15,18 @@ namespace Muhametshin_Глазки_save
     
     public partial class MuhametshinEyesEntities : DbContext
     {
+        private static MuhametshinEyesEntities _context;
+
+        public static MuhametshinEyesEntities GetContext()
+        {
+            if (_context == null)
+            {
+                _context = new MuhametshinEyesEntities();
+            }
+
+            return _context;
+        }
+
         public MuhametshinEyesEntities()
             : base("name=MuhametshinEyesEntities")
         {

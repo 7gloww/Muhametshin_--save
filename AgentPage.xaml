@@ -24,14 +24,56 @@
                          GotFocus="TBoxSearch_GotFocus" LostFocus="TBoxSearch_LostFocus" Foreground="Gray"/>
             </StackPanel>
             <StackPanel Grid.Column="1" Margin="10,5,0,5" Orientation="Horizontal" VerticalAlignment="Center">
-                <ComboBox Name="ComboSort" SelectionChanged="ComboSort_SelectionChanged" Height="25" FontSize="15" Width="250"/>
+                <ComboBox Name="ComboSort" Text="Сортировка" IsEditable="True" IsReadOnly="True" Foreground="Gray" SelectionChanged="ComboSort_SelectionChanged" Height="25" FontSize="15" Width="250"/>
             </StackPanel>
             <StackPanel Grid.Column="2" Margin="10,5,0,5" Orientation="Horizontal" VerticalAlignment="Center">
-                <ComboBox Name="ComboType" SelectionChanged="ComboType_SelectionChanged" Height="25" FontSize="15" Width="150"></ComboBox>
+                <ComboBox Name="ComboType" Text="Все типы" IsEditable="True" IsReadOnly="True" Foreground="Gray" SelectionChanged="ComboType_SelectionChanged" Height="25" FontSize="15" Width="150"></ComboBox>
             </StackPanel>
         </Grid>
         <ListView Name="AgentListView" Grid.Row="1">
-
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="BorderThickness" Value="1"></Setter>
+                    <Setter Property="BorderBrush" Value="Black"></Setter>
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition Width="500"></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Image Width="200" Grid.Column="0" Grid.RowSpan="4" Stretch="UniformToFill" HorizontalAlignment="Center">
+                            <Image.Source>
+                                <Binding Path="ProductPhotoPath">
+                                    <Binding.TargetNullValue>
+                                        <ImageSource>
+                                            Resources/picture.png
+                                        </ImageSource>
+                                    </Binding.TargetNullValue>
+                                </Binding>
+                            </Image.Source>
+                        </Image>
+                        <TextBlock Text="IMAGE" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center" FontSize="40"></TextBlock>
+                        <TextBlock Text="{Binding AgentType.Title}" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Left" FontSize="20" TextWrapping="Wrap"></TextBlock>
+                        <TextBlock Text="|" Margin="60,0,0,0" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Left" FontSize="20" TextWrapping="Wrap"></TextBlock>
+                        <TextBlock Text="{Binding Title}" Margin="75,0,0,0" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Left" FontSize="20" TextWrapping="Wrap"></TextBlock>
+                        <TextBlock Text="NUM" Grid.Column="1" Grid.Row="1" FontSize="16" TextWrapping="Wrap"></TextBlock>
+                        <TextBlock Text="Продаж за год" Margin="45,0,0,0" Grid.Column="1" Grid.Row="1" FontSize="16" TextWrapping="Wrap"></TextBlock>
+                        <TextBlock Text="{Binding Phone}" Grid.Column="1" Grid.Row="2" FontSize="16" TextWrapping="Wrap"></TextBlock>
+                        <TextBlock Text="Приоритетность: " Grid.Column="1" Grid.Row="3" FontSize="16" TextWrapping="Wrap"></TextBlock>
+                        <TextBlock Text="{Binding Priority}" Margin="140,0,0,0" Grid.Column="1" Grid.Row="3" FontSize="16" TextWrapping="Wrap"></TextBlock>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
         </ListView>
     </Grid>
 </Page>
