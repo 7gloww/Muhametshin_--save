@@ -33,7 +33,70 @@ namespace Muhametshin_Глазки_save
         public string DirectorName { get; set; }
         public string INN { get; set; }
         public string KPP { get; set; }
-    
+
+        public int SalesForYear
+        {
+            get
+            {
+                int sales = 0;
+                foreach(ProductSale p in ProductSale)
+                {
+                    //TimeSpan differenceWithoutTime = DateTime.Today.Date - p.SaleDate.Date;
+                    //if ((int) differenceWithoutTime.TotalDays <= 365)
+                    sales += p.ProductCount;
+                }
+                return sales;
+            }
+        }
+        public decimal Sales
+        {
+            get
+            {
+                decimal s = 0;
+                foreach(ProductSale p in ProductSale)
+                {
+                    s += p.Stoimost;
+                }
+                return s;
+            }
+        }
+        public int Discount
+        {
+            get
+            {
+                if (this.Sales >= 500000)
+                {
+                    return 25;
+                }
+                if (this.Sales >= 150000)
+                {
+                    return 20;
+                }
+                if (this.Sales >= 50000)
+                {
+                    return 10;
+                }
+                if (this.Sales >= 10000)
+                {
+                    return 5;
+                }
+                return 0;
+            }
+        }
+        public string FonStyle
+        {
+            get
+            {
+                if (Discount >= 25)
+                {
+                    return "LightGreen";
+                }
+                else
+                {
+                    return "White";
+                }
+            }
+        }
         public virtual AgentType AgentType { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AgentPriorityHistory> AgentPriorityHistory { get; set; }

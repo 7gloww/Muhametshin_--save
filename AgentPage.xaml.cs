@@ -23,13 +23,19 @@ namespace Muhametshin_Глазки_save
         public AgentPage()
         {
             InitializeComponent();
-            var currentAgent = MuhametshinEyesEntities.GetContext().Agent.ToList();
-            AgentListView.ItemsSource = currentAgent;
+            UpdateAgents();
         }
 
+        private void UpdateAgents()
+        {
+            var currentAgent = MuhametshinEyesEntities.GetContext().Agent.ToList();
+            AgentListView.ItemsSource = currentAgent;
+            currentAgent = currentAgent.Where(p => p.Title.ToLower().Contains(TBoxSearch.Text.ToLower())).ToList();
+            AgentListView.ItemsSource = currentAgent.ToList();
+        }
         private void TBoxSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
-
+            UpdateAgents();
         }
 
         private void ComboSort_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -42,23 +48,23 @@ namespace Muhametshin_Глазки_save
 
         }
 
-        private void TBoxSearch_GotFocus(object sender, RoutedEventArgs e)
-        {
+        ////private void TBoxSearch_GotFocus(object sender, RoutedEventArgs e)
+        ////{
 
-            if (TBoxSearch.Text == "Введите для поиска")
-            {
-                TBoxSearch.Text = "";
-                TBoxSearch.Foreground = Brushes.Black;
-            }
-        }
+        ////    if (TBoxSearch.Text == "Введите для поиска")
+        ////    {
+        ////        TBoxSearch.Text = "";
+        ////        TBoxSearch.Foreground = Brushes.Black;
+        ////    }
+        ////}
 
-        private void TBoxSearch_LostFocus(object sender, RoutedEventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(TBoxSearch.Text))
-            {
-                TBoxSearch.Foreground = Brushes.Gray;
-                TBoxSearch.Text = "Введите для поиска";
-            }
-        }
+        ////private void TBoxSearch_LostFocus(object sender, RoutedEventArgs e)
+        ////{
+        ////    if (string.IsNullOrWhiteSpace(TBoxSearch.Text))
+        ////    {
+        ////        TBoxSearch.Foreground = Brushes.Gray;
+        ////        TBoxSearch.Text = "Введите для поиска";
+        ////    }
+        ////}
     }
 }
