@@ -72,7 +72,6 @@
             <ListView.ContextMenu>
                 <ContextMenu DataContext="{Binding PlacementTarget.SelectedItem, RelativeSource={RelativeSource Self}}">
                     <MenuItem Header="Редактировать агента" Click="MenuItem_Click"></MenuItem>
-                    <MenuItem Header="Добавить агента" Click="BtnAddAgent_Click"></MenuItem>
                 </ContextMenu>
             </ListView.ContextMenu>
             <ListView.ItemTemplate>
@@ -144,5 +143,7 @@
             </ListBox>
             <Button Name="RightDirButton" Content="&gt;" Width="20" Height="20" Click="RightDirButton_Click"></Button>
         </StackPanel>
+
+        <Button Content="Добавить агента" Click="BtnAddAgent_Click" Grid.Row="2" HorizontalAlignment="Left"></Button>
     </Grid>
 </Page>
