@@ -5,11 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Muhametshin_Глазки_save"
         mc:Ignorable="d"
-        Title="AgentSalesHistoryWindow" Height="450" Width="800" FontFamily="Century Gothic">
+        Title="AgentSalesHistoryWindow" Height="450" Width="850" FontFamily="Century Gothic">
 
     <Window.Resources>
         <Style TargetType="TextBlock">
-            <Setter Property="FontSize" Value="18"></Setter>
+            <Setter Property="FontSize" Value="15"></Setter>
         </Style>
     </Window.Resources>
 
@@ -30,7 +30,7 @@
                 <TextBlock Text="Товар:" Margin="0 0 0 4"></TextBlock>
                 <ComboBox Name="CBoxProducts" Margin="0 0 10 0" DisplayMemberPath="Title" 
                           IsEditable="True" VerticalAlignment="Center"
-                          TextSearch.TextPath="Title"></ComboBox>
+                          TextSearch.TextPath="Title" Height="25" FontSize="15"></ComboBox>
             </StackPanel>
 
             <Grid Grid.Column="1">
@@ -42,12 +42,12 @@
 
                 <StackPanel Grid.Column="0">
                     <TextBlock Text="Дата:" Margin="0 0 0 4"></TextBlock>
-                    <DatePicker Name="DPickerSaleDate" Margin="0 0 10 0"></DatePicker>
+                    <DatePicker Name="DPickerSaleDate" Margin="0 0 10 0" FontSize="15"></DatePicker>
                 </StackPanel>
 
                 <StackPanel Grid.Column="1">
-                    <TextBlock Text="Кол-во:" Margin="0 0 0 4"></TextBlock>
-                    <TextBox Name="TBoxProductCount" Margin="0 0 10 0" Text="1"
+                    <TextBlock Text="Количество:" Margin="0 0 0 4"></TextBlock>
+                    <TextBox Name="TBoxProductCount" Margin="0 0 10 0" Text="1" Height="25" FontSize="15"
                              VerticalAlignment="Center"></TextBox>
                 </StackPanel>
 

@@ -79,9 +79,16 @@ namespace Muhametshin_Глазки_save
 
             _context.ProductSale.Add(sale);
 
-            _context.SaveChanges();
-            UpdateSales();
-
+            try
+            {
+                _context.SaveChanges();
+                UpdateSales();
+            }
+            catch (Exception ex)
+            {
+                _messageService.ShowError($"Вы не можете добавить товар агенту, которого не существует.");
+            }
+            
             CBoxProducts.SelectedItem = null;
             DPickerSaleDate.SelectedDate = DateTime.Today;
             TBoxProductCount.Text = "1";
